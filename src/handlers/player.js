@@ -119,8 +119,8 @@ module.exports = async (client, track) => {
         }, 10000);
       }
 
-      // ✅ Destroy player
-      if (player) player.destroy();
+      // ✅ Destroy player only if 24/7 mode is OFF
+      if (player && !player.data.is247) player.destroy();
 
     } catch (err) {
       console.log(`Error in playerEmpty event: ${err}`);
