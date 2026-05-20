@@ -39,7 +39,7 @@ class MainClient extends Client {
     this.aliases = new Collection();
     this.cluster = new ClusterClient(this);
     this.topgg = new Topgg.Api(this.config.topgg_Api);
-    this.error = new WebhookClient({ url: this.config.error_log });
+    this.error = this.config.error_log ? new WebhookClient({ url: this.config.error_log }) : null;
 
     console.log("[DEBUG] Lavalink nodes configuration:", this.config.nodes);
 
